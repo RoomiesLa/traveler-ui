@@ -5,6 +5,7 @@ import Copy from "../icons/Copy"
 import CheckMark from '../icons/Checkmark'
 import Logo from "../icons/Logo"
 import thumb from "../assets/landing_thumb.png"
+import Download from '../icons/Download'
 
 function Home() {
     return (
@@ -115,8 +116,8 @@ function HomeSection() {
             <div className="w-4/12">
                 <h3 className="text-blue-700 text-5xl font-bold mb-5 upcoming">Navigate Your Documentation Journey with Ease</h3>
                 <p className="text-slate-700 text-2xl mb-10 upcoming">Chart Your Course to Clear and Concise Reports with Traveler.</p>
-                <CopyButton textToCopy="npx traveler --help" />
-                <button className="text-white bg-blue-700 border-blue-700 border-2 rounded-full px-5 py-2 mt-10">Get Started</button>
+                <CopyButton textToCopy="brew install traveler" />
+                <button className="text-white bg-blue-700 border-blue-700 border-2 rounded-full px-5 py-3 mt-10 flex gap-4 hover:bg-blue-900 transition-colors">Other options <Download /></button>
             </div>
             <div className="w-8/12">
                 <img src={thumb} alt="Thumb" />
@@ -131,8 +132,8 @@ function Header() {
             <Nav />
             <Logo />
             <div className="flex gap-5">
-                <button className="bg-white text-blue-700 border-blue-700 border-2 rounded-full px-5 py-2">Sign up</button>
-                <button className="text-white bg-blue-700 border-blue-700 border-2 rounded-full px-5 py-2">Log in</button>
+                <button className="bg-white text-blue-700 border-blue-700 border-2 rounded-full px-5 py-2 hover:underline">Sign up</button>
+                <button className="text-white bg-blue-700 border-blue-700 border-2 rounded-full px-5 py-2 hover:bg-blue-900 transition-colors">Log in</button>
             </div>
         </header>
     )
@@ -145,6 +146,7 @@ function Nav() {
                 <NavItem text="Home" href="#" />
                 <NavItem text="Pricing" href="#" />
                 <NavItem text="Docs" href="#" />
+                <NavItem text="Download" href="#" />
             </ul>
         </nav>
     )

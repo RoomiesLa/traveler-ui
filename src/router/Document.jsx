@@ -17,6 +17,14 @@ function groupBy(array, callback) {
     return groups;
 }
 
+async function getProject() {
+    
+}
+
+async function getUserInfo() {
+
+}
+
 const data = [
     {
         id: uuid4(),
@@ -603,7 +611,7 @@ const Document = () => {
             <Helmet>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             </Helmet>
-            <section className="container mx-auto w-10/12">
+            <section className="container mx-auto w-11/12 ml-40">
                 <div className="timeline">
                     {sortedTimeline.map(month => {
                         const [yy, mm] = month.split('-')
@@ -637,7 +645,7 @@ function TimelineMonth({ month, year }) {
                     <div key={entryDay} className="timeline-date w-fit">
                         {entryDay}, {getDayOfWeek(new Date(year, month, entryDay))}
                     </div>
-                    <div className="timeline-section flex justify-start flex-wrap gap-5 ml-20">
+                    <div className="timeline-section flex justify-start flex-wrap gap-12 ml-20">
                         {groupedEntries[entryDay].map(entry => {
                             return (
                                 <TimelineBlock key={entry.id} entry={entry} />
@@ -659,7 +667,7 @@ TimelineMonth.propTypes = {
 
 function TimelineBlock({ entry }) {
     return (
-        <div className="timeline-box w-2/5 shadow-xl hover:scale-105">
+        <div className="timeline-box w-1/4 shadow-xl hover:scale-105">
             <div className="box-title font-semibold p-4">
                 <i className="fa fa-asterisk text-success" aria-hidden="true"></i>{entry.title}
             </div>
