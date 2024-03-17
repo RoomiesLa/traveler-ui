@@ -7,9 +7,9 @@ function AppRouter() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" Component={Home}/>
-                <Route path="/dashboard" Component={Dashboard}/>
-                <Route path="/document" Component={Document}/>
+                <Route path="/" Component={Home} />
+                <Route path="/dashboard" Component={Dashboard} />
+                <Route path="/document" Component={Document} />
             </Routes>
         </BrowserRouter>
     )
