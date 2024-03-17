@@ -1,0 +1,40 @@
+.header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f4f4f4;
+    height: 10vh;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    flex-direction: column;
+    height: 90vh;
+    margin: 0; /* En lugar de none */
+}
+
+.row {
+    display: flex;
+    justify-content: space-around; /* Distribuye los elementos equitativamente en el espacio disponible */
+    margin-bottom: 20px; /* Espacio entre las filas */
+}
+
+.box {
+    background-color: #f4f4f4;
+    padding: 40px; /* Ajustar el tamaño de las tarjetas */
+    border-radius: 10px;
+    margin: 30px;
+    box-shadow: 0 0 10px 0 #333;
+    width: 30%; /* 30% para que haya tres cajas en una fila */
+}
+
+@media (max-width: 768px) {
+    .box {
+        width: 45%; /* Cambia el tamaño de las tarjetas en dispositivos más pequeños */
+    }
+}
