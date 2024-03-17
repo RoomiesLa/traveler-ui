@@ -1,7 +1,8 @@
 import './document.css'
 import { Helmet } from 'react-helmet';
-import { v4 as uuid4 } from 'uuid';
+// import { v4 as uuid4 } from 'uuid';
 import PropTypes from 'prop-types';
+import MagnifyGlass from '../icons/MagnifyGlass';
 
 function groupBy(array, callback) {
     const groups = {};
@@ -607,7 +608,10 @@ const entries = await getProject()
 //         author: "David Patel",
 //         date: new Date("2024-01-10")
 //     },
-// ].sort((a, b) => a.date - b.date)
+// ]
+    // For test purposes
+    // .map(item => ({ ...item, description: `<div>docs: <br>Welcome to the Budget Pokedex Documentation!<br><br>Introduction:<br>The Budget Pokedex is an extremely simple application developed by Benschwartz96 using JavaScript, Bootstrap, HTML, and CSS. The app provides users with a comprehensive list of Generation 1 Pokémon, along with basic information about each Pokémon upon clicking on its name.<br><br>Features:<br><br>* A list of all Generation 1 Pokémon<br>* Clicking on any Pokémon name brings up a modal window displaying a picture and basic information (Name, Height, Weight, Type)<br><br>Technologies:<br><br>* JavaScript<br>* Bootstrap<br>* HTML<br>* CSS<br><br>Documentation Structure:<br><br>This documentation is structured as follows:<br><br>1. Introduction<br>2. Features<br>3. Technologies<br>4. Conclusion<br><br>Introduction:<br>The Budget Pokedex is a simple app that demonstrates the beginning of Benschwartz96's learning journey with JavaScript. The app provides users with a list of Generation 1 Pokémon and allows them to access basic information about each Pokémon upon clicking on its name.<br><br>Features:<br>The Budget Pokedex offers the following features:<br><br>* Comprehensive list of Generation 1 Pokémon<br>* Modal window displaying a picture and basic information (Name, Height, Weight, Type) upon clicking on any Pokémon name<br><br>Technologies:<br>The Budget Pokedex is built using the following technologies:<br><br>* JavaScript<br>* Bootstrap<br>* HTML<br>* CSS<br><br>Conclusion:<br>The Budget Pokedex is a simple yet functional app that demonstrates Benschwartz96's basic understanding of JavaScript, Bootstrap, HTML, and CSS. The app provides users with a comprehensive list of Generation 1 Pokémon and allows them to access basic information about each Pokémon upon clicking on its name. This documentation serves as a reference for the technologies used in the development of the Budget Pokedex.</div>` }))
+    // .sort((a, b) => a.date - b.date)
 console.log({ entries })
 const data = entries.sort((a, b) => a.date - b.date)
 
@@ -643,6 +647,12 @@ const Document = () => {
                     <h3>tonderflash</h3>
                 </div>
             </header>
+            <form className="m-auto w-1/3 my-10 border-blue-500 border-2 rounded-full py-2 px-5 flex justify-between gap-3">
+                <input type="text" className="w-full bg-white text-black border-none active:border-none active:outline-none focus:border-none focus:outline-none" placeholder='Tell me what you want to find...'/>
+                <button onClick={search} className="transition-colors bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">
+                    <MagnifyGlass />
+                </button>
+            </form>
             <section className="container mx-auto w-11/12 ml-40">
                 <div className="timeline">
                     {sortedTimeline.map(month => {
@@ -654,6 +664,10 @@ const Document = () => {
             </section>
         </>
     )
+}
+
+function search(e) {
+    e.preventDefault()
 }
 
 function getDayOfWeek(date) {
