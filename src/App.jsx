@@ -115,8 +115,8 @@ function HomeSection() {
       <div className="w-4/12">
         <h3 className="text-blue-700 text-5xl font-bold mb-5 upcoming">Navigate Your Documentation Journey with Ease</h3>
         <p className="text-slate-700 text-2xl mb-10 upcoming">Chart Your Course to Clear and Concise Reports with Traveler.</p>
-        <button className="text-white bg-blue-700 border-blue-700 border-2 rounded-full px-5 py-2 mb-10">Get Started</button>
         <CopyButton textToCopy="npx traveler --help" />
+        <button className="text-white bg-blue-700 border-blue-700 border-2 rounded-full px-5 py-2 mt-10">Get Started</button>
       </div>
       <div className="w-8/12">
         <img src={thumb} alt="Thumb" />
@@ -128,8 +128,8 @@ function HomeSection() {
 function Header() {
   return (
     <header className="flex justify-between m-5">
-      <Logo />
       <Nav />
+      <Logo />
       <div className="flex gap-5">
         <button className="bg-white text-blue-700 border-blue-700 border-2 rounded-full px-5 py-2">Sign up</button>
         <button className="text-white bg-blue-700 border-blue-700 border-2 rounded-full px-5 py-2">Log in</button>

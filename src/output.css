@@ -560,6 +560,10 @@ video {
   margin-left: 6rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .flex {
   display: flex;
 }
