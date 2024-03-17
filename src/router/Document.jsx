@@ -609,11 +609,51 @@ const entries = await getProject()
 //         date: new Date("2024-01-10")
 //     },
 // ]
-    // For test purposes
-    // .map(item => ({ ...item, description: `<div>docs: <br>Welcome to the Budget Pokedex Documentation!<br><br>Introduction:<br>The Budget Pokedex is an extremely simple application developed by Benschwartz96 using JavaScript, Bootstrap, HTML, and CSS. The app provides users with a comprehensive list of Generation 1 Pokémon, along with basic information about each Pokémon upon clicking on its name.<br><br>Features:<br><br>* A list of all Generation 1 Pokémon<br>* Clicking on any Pokémon name brings up a modal window displaying a picture and basic information (Name, Height, Weight, Type)<br><br>Technologies:<br><br>* JavaScript<br>* Bootstrap<br>* HTML<br>* CSS<br><br>Documentation Structure:<br><br>This documentation is structured as follows:<br><br>1. Introduction<br>2. Features<br>3. Technologies<br>4. Conclusion<br><br>Introduction:<br>The Budget Pokedex is a simple app that demonstrates the beginning of Benschwartz96's learning journey with JavaScript. The app provides users with a list of Generation 1 Pokémon and allows them to access basic information about each Pokémon upon clicking on its name.<br><br>Features:<br>The Budget Pokedex offers the following features:<br><br>* Comprehensive list of Generation 1 Pokémon<br>* Modal window displaying a picture and basic information (Name, Height, Weight, Type) upon clicking on any Pokémon name<br><br>Technologies:<br>The Budget Pokedex is built using the following technologies:<br><br>* JavaScript<br>* Bootstrap<br>* HTML<br>* CSS<br><br>Conclusion:<br>The Budget Pokedex is a simple yet functional app that demonstrates Benschwartz96's basic understanding of JavaScript, Bootstrap, HTML, and CSS. The app provides users with a comprehensive list of Generation 1 Pokémon and allows them to access basic information about each Pokémon upon clicking on its name. This documentation serves as a reference for the technologies used in the development of the Budget Pokedex.</div>` }))
-    // .sort((a, b) => a.date - b.date)
+//     // For test purposes
+//     .map(item => ({ ...item, description: `<div>docs: <br>Welcome to the Budget Pokedex Documentation!<br><br>Introduction:<br>The Budget Pokedex is an extremely simple application developed by Benschwartz96 using JavaScript, Bootstrap, HTML, and CSS. The app provides users with a comprehensive list of Generation 1 Pokémon, along with basic information about each Pokémon upon clicking on its name.<br><br>Features:<br><br>* A list of all Generation 1 Pokémon<br>* Clicking on any Pokémon name brings up a modal window displaying a picture and basic information (Name, Height, Weight, Type)<br><br>Technologies:<br><br>* JavaScript<br>* Bootstrap<br>* HTML<br>* CSS<br><br>Documentation Structure:<br><br>This documentation is structured as follows:<br><br>1. Introduction<br>2. Features<br>3. Technologies<br>4. Conclusion<br><br>Introduction:<br>The Budget Pokedex is a simple app that demonstrates the beginning of Benschwartz96's learning journey with JavaScript. The app provides users with a list of Generation 1 Pokémon and allows them to access basic information about each Pokémon upon clicking on its name.<br><br>Features:<br>The Budget Pokedex offers the following features:<br><br>* Comprehensive list of Generation 1 Pokémon<br>* Modal window displaying a picture and basic information (Name, Height, Weight, Type) upon clicking on any Pokémon name<br><br>Technologies:<br>The Budget Pokedex is built using the following technologies:<br><br>* JavaScript<br>* Bootstrap<br>* HTML<br>* CSS<br><br>Conclusion:<br>The Budget Pokedex is a simple yet functional app that demonstrates Benschwartz96's basic understanding of JavaScript, Bootstrap, HTML, and CSS. The app provides users with a comprehensive list of Generation 1 Pokémon and allows them to access basic information about each Pokémon upon clicking on its name. This documentation serves as a reference for the technologies used in the development of the Budget Pokedex.</div>` }))
+//     .map(item => {
+//         // Find the index of the first <br>
+//         const indexOfFirstBr = item.description.indexOf('<br>') + 4;
+
+//         // Find the index of the second <br> starting from the index of the first <br>
+//         const indexOfSecondBr = item.description.indexOf('<br>', indexOfFirstBr);
+
+//         // Extract the substring until before the second <br>
+//         const title = item.description.substring(indexOfFirstBr, indexOfSecondBr);
+
+//         const indexOfRest = item.description.indexOf(title) + title.length;
+//         const description = item.description.substring(indexOfRest);
+
+//         return {
+//             ...item,
+//             title,
+//             description
+//         }
+//     })
+//     .sort((a, b) => a.date - b.date)
+
 console.log({ entries })
-const data = entries.sort((a, b) => a.date - b.date)
+const data = entries
+.map(item => {
+    // Find the index of the first <br>
+    const indexOfFirstBr = item.description.indexOf('<br>') + 4;
+
+    // Find the index of the second <br> starting from the index of the first <br>
+    const indexOfSecondBr = item.description.indexOf('<br>', indexOfFirstBr);
+
+    // Extract the substring until before the second <br>
+    const title = item.description.substring(indexOfFirstBr, indexOfSecondBr);
+
+    const indexOfRest = item.description.indexOf(title) + title.length;
+    const description = item.description.substring(indexOfRest);
+
+    return {
+        ...item,
+        title,
+        description
+    }
+})
+.sort((a, b) => a.date - b.date)
 
 const groupedData = groupBy(data, (entry) => `${entry.date.getFullYear()}-${entry.date.getMonth() + 1}`)
 
@@ -648,7 +688,7 @@ const Document = () => {
                 </div>
             </header>
             <form className="m-auto w-1/3 my-10 border-blue-500 border-2 rounded-full py-2 px-5 flex justify-between gap-3">
-                <input type="text" className="w-full bg-white text-black border-none active:border-none active:outline-none focus:border-none focus:outline-none" placeholder='Tell me what you want to find...'/>
+                <input type="text" className="w-full bg-white text-black border-none active:border-none active:outline-none focus:border-none focus:outline-none" placeholder='Tell me what you want to find...' />
                 <button onClick={search} className="transition-colors bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline">
                     <MagnifyGlass />
                 </button>
